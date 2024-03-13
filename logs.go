@@ -8,7 +8,8 @@ var log *zap.Logger
 
 func init() {
 	var err error
-	log, err = zap.NewDevelopment()
+	config := zap.NewDevelopmentConfig()
+	log, err = config.Build(zap.AddCallerSkip(1))
 	if err != nil {
 		panic(err)
 	}
